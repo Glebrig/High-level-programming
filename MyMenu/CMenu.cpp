@@ -1,4 +1,6 @@
 #include "./CMenu.h"
+#include <iostream>
+#include <string>
 
 namespace SGP {
 CMenu::CMenu(string title, CMenuItem *items, size_t count) : title(title), items(items), count(count) {}

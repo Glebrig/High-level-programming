@@ -1,4 +1,5 @@
-#include "./CMenuItem.h"
+#include ".\CMenuItem.h"
+#include <string>
 
 namespace SGP{
 CMenuItem::CMenuItem(std::string name, Func func) : item_name(name), func(func) {}
@@ -13,5 +14,5 @@ void CMenuItem::print() {
 
 int CMenuItem::run() {
     return func();
-}
+    }
 }
