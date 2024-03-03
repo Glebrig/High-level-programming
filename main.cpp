@@ -1,13 +1,14 @@
 // g++ ./main.cpp ./MyMenu/CMenuItem.cpp ./MyMenu/CMenu.cpp && ./a.out
 // g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp
-// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\User\User.cpp .\Models\Car\Car.cpp .\Models\User\Employee.cpp .\Models\User\Client.cpp
+// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\User\User.cpp .\Models\Card\Card.cpp .\Models\Consultation\Consultation.cpp .\Models\User\Doctor.cpp .\Models\User\Patient.cpp
 
 #include ".\MyMenu\CMenu.h"
 #include ".\MyMenu\CMenuItem.h"
 #include ".\Models\User\User.h"
-#include ".\Models\User\Employee.h"
-#include ".\Models\User\Client.h"
-#include ".\Models\Car\Car.h"
+#include ".\Models\User\Doctor.h"
+#include ".\Models\User\Patient.h"
+#include ".\Models\Card\Card.h"
+#include ".\Models\Consultation\Consultation.h"
 #include <iostream>
 #include <string>
 
@@ -52,7 +53,7 @@ int f4() {
 
 int f5(){
     using namespace SGP;
-    Employee Gleb("Gleb", "Suhanov", 18, "sgp123", "123456789", "mechanic");
+    Doctor Gleb("Gleb", "Suhanov", 18, "sgp123", "123456789", "Ophthalmologist");
     Gleb.printPublicData();
     Gleb.printPersonalData();
     std::cout << '\n';
@@ -61,8 +62,8 @@ int f5(){
 
 int f6(){
     using namespace SGP;    
-    Car BMW("BMW", 999, 2020, "red");
-    BMW.printData();
+    Card FitstCard("12345", "There are no records");
+    FitstCard.printData();
     std::cout << '\n';
     return 6;
 }
@@ -74,7 +75,7 @@ const int ITEMS_NUMBER = 6;
 
 int main() {
   using namespace SGP;
-    CMenuItem items[ITEMS_NUMBER] {CMenuItem{"summation", f1}, CMenuItem{"subtraction", f2}, CMenuItem{"multiplication", f3}, CMenuItem{"division", f4}, CMenuItem{"employee", f5}, CMenuItem{"car", f6}};
+    CMenuItem items[ITEMS_NUMBER] {CMenuItem{"summation", f1}, CMenuItem{"subtraction", f2}, CMenuItem{"multiplication", f3}, CMenuItem{"division", f4}, CMenuItem{"doctor", f5}, CMenuItem{"card", f6}};
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
 
