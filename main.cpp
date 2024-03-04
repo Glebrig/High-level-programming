@@ -1,14 +1,26 @@
-// g++ ./main.cpp ./MyMenu/CMenuItem.cpp ./MyMenu/CMenu.cpp && ./a.out
-// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp
-// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\User\User.cpp .\Models\Card\Card.cpp .\Models\Consultation\Consultation.cpp .\Models\User\Doctor.cpp .\Models\User\Patient.cpp
+// g++ ./main.cpp ./MyMenu/CMenuItem.cpp ./MyMenu/CMenu.cpp ./Models/User/User.cpp ./Models/Airplane/Airplane.cpp ./Models/Flight/Flight.cpp ./Models/User/Employee.cpp ./Models/Ticket/Ticket.cpp ./Models/User/Passenger.cpp && ./a.out
 
-#include ".\MyMenu\CMenu.h"
+// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\User\User.cpp .\Models\Airplane\Airplane.cpp .\Models\Flight\Flight.cpp .\Models\User\Employee.cpp .\Models\Ticket\Ticket.cpp .\Models\User\Passenger.cpp
+
+
+/*#include ".\MyMenu\CMenu.h"
 #include ".\MyMenu\CMenuItem.h"
 #include ".\Models\User\User.h"
-#include ".\Models\User\Doctor.h"
-#include ".\Models\User\Patient.h"
-#include ".\Models\Card\Card.h"
-#include ".\Models\Consultation\Consultation.h"
+#include ".\Models\User\Employee.h"
+#include ".\Models\User\Passenger.h"
+#include ".\Models\Airplane\Airplane.h"
+#include ".\Models\Flight\Flight.h"
+#include ".\Models\Ticket\Ticket.h"*/
+
+#include "./MyMenu/CMenu.h"
+#include "./MyMenu/CMenuItem.h"
+#include "./Models/User/User.h"
+#include "./Models/User/Employee.h"
+#include "./Models/User/Passenger.h"
+#include "./Models/Airplane/Airplane.h"
+#include "./Models/Flight/Flight.h"
+#include "./Models/Ticket/Ticket.h"
+
 #include <iostream>
 #include <string>
 
@@ -53,7 +65,7 @@ int f4() {
 
 int f5(){
     using namespace SGP;
-    Doctor Gleb("Gleb", "Suhanov", 18, "sgp123", "123456789", "Ophthalmologist");
+    Employee Gleb("Gleb", "Suhanov", 18, "sgp123", "123456789", "Pilot");
     Gleb.printPublicData();
     Gleb.printPersonalData();
     std::cout << '\n';
@@ -62,7 +74,7 @@ int f5(){
 
 int f6(){
     using namespace SGP;    
-    Card FitstCard("12345", "There are no records");
+    Airplane FitstCard("12345", "MIG");
     FitstCard.printData();
     std::cout << '\n';
     return 6;
@@ -75,7 +87,7 @@ const int ITEMS_NUMBER = 6;
 
 int main() {
   using namespace SGP;
-    CMenuItem items[ITEMS_NUMBER] {CMenuItem{"summation", f1}, CMenuItem{"subtraction", f2}, CMenuItem{"multiplication", f3}, CMenuItem{"division", f4}, CMenuItem{"doctor", f5}, CMenuItem{"card", f6}};
+    CMenuItem items[ITEMS_NUMBER] {CMenuItem{"summation", f1}, CMenuItem{"subtraction", f2}, CMenuItem{"multiplication", f3}, CMenuItem{"division", f4}, CMenuItem{"employee", f5}, CMenuItem{"airplane", f6}};
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
 
