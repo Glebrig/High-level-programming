@@ -62,20 +62,54 @@ int f5(){
 
 int f6(){
     using namespace SGP;    
-    Airplane FitstCard("12345", "MIG");
-    FitstCard.printData();
+    Airplane FirstPlane("12345", "MIG");
+    FirstPlane.printData();
     std::cout << '\n';
     return 6;
 }
 
+const int SIZE_ARRAY = 2;
+SGP::User* arrayUsers[SIZE_ARRAY];
+
+int f7(){
+    for(int i = 0; i<SIZE_ARRAY; i++){
+        arrayUsers[i]->printPersonalData();//!
+    }
+    return 7;
+}
+
+int f8(){
+    SGP::Employee *addUser;
+    std::cin >> *addUser;
+    //
+    return 8;
+}
+
+int f9(){
+
+    return 9;
+}
+
+int f10(){
+
+    return 10;
+}
+
+int f11(){
+
+    return 11;
+}
+
 #pragma endregion
 
-const int ITEMS_NUMBER = 6;
-
+const int ITEMS_NUMBER = 11;
 
 int main() {
   using namespace SGP;
-    CMenuItem items[ITEMS_NUMBER] {CMenuItem{"summation", f1}, CMenuItem{"subtraction", f2}, CMenuItem{"multiplication", f3}, CMenuItem{"division", f4}, CMenuItem{"employee", f5}, CMenuItem{"airplane", f6}};
+    int a = 0;
+    CMenuItem items[ITEMS_NUMBER] {CMenuItem{"summation", f1}, CMenuItem{"subtraction", f2}, CMenuItem{"multiplication", f3}, CMenuItem{"division", f4}, CMenuItem{"employee", f5}, CMenuItem{"airplane", f6},
+    CMenuItem{"array of users", f7}, CMenuItem{"add employee", f8}, CMenuItem{"add passenger", f9}, CMenuItem{"delete user", f10}, CMenuItem{"edit user", f11}};
+    
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
 
