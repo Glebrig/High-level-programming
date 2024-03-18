@@ -1,26 +1,14 @@
-// g++ ./main.cpp ./MyMenu/CMenuItem.cpp ./MyMenu/CMenu.cpp ./Models/User/User.cpp ./Models/Airplane/Airplane.cpp ./Models/Flight/Flight.cpp ./Models/User/Employee.cpp ./Models/Ticket/Ticket.cpp ./Models/User/Passenger.cpp && ./a.out
+// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\User\User.cpp .\Models\Airplane\Airplane.cpp .\Models\User\Employee.cpp .\Models\Ticket\Ticket.cpp .\Models\User\Passenger.cpp
 
-// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\User\User.cpp .\Models\Airplane\Airplane.cpp .\Models\Flight\Flight.cpp .\Models\User\Employee.cpp .\Models\Ticket\Ticket.cpp .\Models\User\Passenger.cpp
+// g++ main.cpp MyMenu/CMenuItem.cpp MyMenu/CMenu.cpp Models/User/User.cpp Models/Airplane/Airplane.cpp Models/User/Employee.cpp Models/Ticket/Ticket.cpp Models/User/Passenger.cpp
 
-
-/*#include ".\MyMenu\CMenu.h"
+#include ".\MyMenu\CMenu.h"
 #include ".\MyMenu\CMenuItem.h"
 #include ".\Models\User\User.h"
 #include ".\Models\User\Employee.h"
 #include ".\Models\User\Passenger.h"
 #include ".\Models\Airplane\Airplane.h"
-#include ".\Models\Flight\Flight.h"
-#include ".\Models\Ticket\Ticket.h"*/
-
-#include "./MyMenu/CMenu.h"
-#include "./MyMenu/CMenuItem.h"
-#include "./Models/User/User.h"
-#include "./Models/User/Employee.h"
-#include "./Models/User/Passenger.h"
-#include "./Models/Airplane/Airplane.h"
-#include "./Models/Flight/Flight.h"
-#include "./Models/Ticket/Ticket.h"
-
+#include ".\Models\Ticket\Ticket.h"
 #include <iostream>
 #include <string>
 
