@@ -10,11 +10,13 @@ namespace SGP{
  friend std::istream& operator>>(std::istream& in, Passenger& passenger);
 
  int getAge();
+ void setAge(int age);
 
  friend bool operator==(const Passenger &d1, const Passenger &d2); 
  friend bool operator>(const Passenger &d1, const Passenger &d2);
  friend bool operator<(const Passenger &d1, const Passenger &d2);
 
+ private:
  std::string m_name;
  std::string m_surname; 
  int m_age; 

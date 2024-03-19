@@ -14,6 +14,12 @@ namespace SGP{
   return m_age;
  }
 
+  void Passenger::setAge(int age){
+    if( (age >= 0) and (age < 100) ) {
+      m_age = age;
+    }
+  } 
+
 std::ostream& operator<<(std::ostream& out, Passenger& passenger){
    out << "Name: " << passenger.m_name << std::endl;
    out << "Sername: " << passenger.m_surname << std::endl;

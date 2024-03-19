@@ -5,6 +5,7 @@ namespace SGP{
  public:
  User(){};
  User(std::string name, std::string surname, int age, std::string login, std::string password);
+
  protected:
  std::string m_name;
  std::string m_surname;

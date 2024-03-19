@@ -9,6 +9,7 @@ namespace SGP{
  Employee(std::string name, std::string surname, int age, std::string login, std::string password, std::string post);
 
  int getAge();
+ void setAge(int age);
 
  friend std::ostream& operator<<(std::ostream& out, Employee& employee);
  friend std::istream& operator>>(std::istream& in, Employee& employee);
@@ -17,6 +18,7 @@ namespace SGP{
  friend bool operator>(const Employee &d1, const Employee &d2);
  friend bool operator<(const Employee &d1, const Employee &d2);
 
+ private:
  std::string m_name;
  std::string m_surname; 
  int m_age; 
