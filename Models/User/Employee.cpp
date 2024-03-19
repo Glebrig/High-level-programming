@@ -4,6 +4,7 @@
 
 #include <iostream>
 namespace SGP{
+  
  Employee::Employee(std::string name, std::string surname, int age, std::string login, std::string password, std::string post):User(name, surname, age, login, password){
     m_name = name;
     m_surname = surname;
@@ -11,6 +12,10 @@ namespace SGP{
     m_login = login;
     m_password = password;
     m_post=post;
+ }
+
+  int Employee::getAge(){
+  return m_age;
  }
 
  std::ostream& operator<<(std::ostream& out, Employee& employee){
@@ -39,14 +44,15 @@ namespace SGP{
    return in;
  }
 
-void Employee::printPublicData(){
- std::cout << "Name: " << m_name << std::endl;
- std::cout << "Surname: " << m_surname << std::endl;
- std::cout << "Age: " << m_age << std::endl;
- std::cout << "Post: " << m_post << std::endl;
- } 
-void Employee::printPersonalData(){
- std::cout << "Login: " << m_login << std::endl;
- std::cout << "Password: " << m_password<< std::endl;
+ bool operator>(const Employee &d1, const Employee &d2){
+ return d1.m_post>d2.m_post;
+ }
+
+ bool operator<(const Employee &d1, const Employee &d2){
+ return d1.m_post<d2.m_post;
+ }
+
+ bool operator==(const Employee &d1, const Employee &d2){
+ return d1.m_post==d2.m_post;
  }
 }

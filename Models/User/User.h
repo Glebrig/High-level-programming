@@ -3,10 +3,8 @@
 namespace SGP{
  class User {
  public:
- User();
+ User(){};
  User(std::string name, std::string surname, int age, std::string login, std::string password);
- virtual void printPublicData()=0;
- virtual void printPersonalData()=0;
  protected:
  std::string m_name;
  std::string m_surname;

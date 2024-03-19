@@ -54,8 +54,7 @@ int f4() {
 int f5(){
     using namespace SGP;
     Employee Gleb("Gleb", "Suhanov", 18, "sgp123", "123456789", "Pilot");
-    Gleb.printPublicData();
-    Gleb.printPersonalData();
+    std::cout << Gleb;
     std::cout << '\n';
     return 5;
 }
@@ -68,25 +67,84 @@ int f6(){
     return 6;
 }
 
-const int SIZE_ARRAY = 2;
-SGP::User* arrayUsers[SIZE_ARRAY];
+const int SIZE_ARRAY = 3;
+SGP::Employee arrayStaff[SIZE_ARRAY];
+SGP::Passenger arrayPassengers[SIZE_ARRAY];
 
 int f7(){
-    for(int i = 0; i<SIZE_ARRAY; i++){
-        arrayUsers[i]->printPersonalData();//!
+    for(int i = 1; i<SIZE_ARRAY-1; i++){
+       if(arrayStaff[i].getAge() != 0 )
+       {
+        std::cout << arrayStaff[i];
+        std::cout << '\n';
+       }
+    }
+
+     for(int i = 0; i<SIZE_ARRAY; i++){
+      // if(arrayPassengers[i] != nullptr)
+       {
+       // std::cout << arrayPassengers[i];
+        std::cout << '\n';
+       }
     }
     return 7;
 }
 
 int f8(){
-    SGP::Employee *addUser;
-    std::cin >> *addUser;
-    //
+    int choice = 0;
+    std::cout << "Who do you want to add?" << '\n' << "Employee (1)" << '\n' << "Passenger (2)" << '\n';
+    std::cin >> choice;
+    switch (choice){
+        
+        case 1:
+            for(int i=0; i<SIZE_ARRAY; i++){
+               // if(arrayStaff[i] == nullptr)
+                {
+                 //   std::cin >> arrayStaff[i];
+                    break;
+                }
+            }
+        break;
+
+        case 2:
+             for(int i=0; i<SIZE_ARRAY; i++){
+              //  if(arrayPassengers[i] == nullptr)
+                {
+               //     std::cin >> arrayPassengers[i];
+                    break;
+                }
+            }
+        break;
+
+        default:
+        std::cout << "ERROR!" << '\n';
+        break;
+    }
     return 8;
 }
 
 int f9(){
+    int choice = 0;
+    int index = -1;
+    std::cout << "Who do you want to delete?" << '\n' << "Employee (1)" << '\n' << "Passenger (2)" << '\n';
+    std::cin >> choice;
+    std::cout << "Enter the user's number:" << '\n';
+    std::cin >> index;
 
+    switch (choice){
+
+        case 1:
+        //arrayStaff[index]->exist = false;
+        break;
+
+        case 2:
+       // arrayPassengers[index]->exist = false;
+        break;
+
+        default:
+        std::cout << "ERROR!" << '\n';
+        break;
+    }
     return 9;
 }
 
@@ -95,20 +153,15 @@ int f10(){
     return 10;
 }
 
-int f11(){
-
-    return 11;
-}
-
 #pragma endregion
 
-const int ITEMS_NUMBER = 11;
+const int ITEMS_NUMBER = 10;
 
 int main() {
   using namespace SGP;
     int a = 0;
     CMenuItem items[ITEMS_NUMBER] {CMenuItem{"summation", f1}, CMenuItem{"subtraction", f2}, CMenuItem{"multiplication", f3}, CMenuItem{"division", f4}, CMenuItem{"employee", f5}, CMenuItem{"airplane", f6},
-    CMenuItem{"array of users", f7}, CMenuItem{"add employee", f8}, CMenuItem{"add passenger", f9}, CMenuItem{"delete user", f10}, CMenuItem{"edit user", f11}};
+    CMenuItem{"array of users", f7}, CMenuItem{"add user", f8}, CMenuItem{"delete user", f9}, CMenuItem{"sort users", f10}};
     
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
