@@ -24,13 +24,17 @@ namespace SGP{
     }
   } 
 
+  void Employee::printData(){
+  std::cout << "Name: " << m_name << "\n";
+  std::cout << "Surname: " << m_surname << "\n";
+  std::cout << "Age: " << m_age << "\n";
+  std::cout << "Login:" << m_login << "\n";
+  std::cout << "Password: " << m_password << "\n";
+  std::cout << "Post: " << m_post << "\n";
+ }
+
  std::ostream& operator<<(std::ostream& out, Employee& employee){
-   out << "Name: " << employee.m_name << std::endl;
-   out << "Sername: " << employee.m_surname << std::endl;
-   out << "Age: " << employee.m_age << std::endl;
-   out << "Login: " << employee.m_login << std::endl;
-   out << "Password: " << employee.m_password << std::endl;
-   out << "Post: " << employee.m_post << std::endl;
+   employee.printData();
    return out;
    }
 
@@ -51,14 +55,23 @@ namespace SGP{
  }
 
  bool operator>(const Employee &d1, const Employee &d2){
- return d1.m_post>d2.m_post;
+ return d1.m_age>d2.m_age;
  }
 
  bool operator<(const Employee &d1, const Employee &d2){
- return d1.m_post<d2.m_post;
+ return d1.m_age<d2.m_age;
  }
 
  bool operator==(const Employee &d1, const Employee &d2){
- return d1.m_post==d2.m_post;
+ return d1.m_age==d2.m_age;
  }
+
+ bool operator==(const Employee &d1, const int &d2){
+ return d1.m_age==d2;
+ }
+
+ bool operator!=(const Employee &d1, const int &d2){
+ return d1.m_age!=d2;
+ }
+
 }

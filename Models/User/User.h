@@ -6,6 +6,8 @@ namespace SGP{
  User(){};
  User(std::string name, std::string surname, int age, std::string login, std::string password);
 
+ virtual void printData() = 0;
+
  protected:
  std::string m_name;
  std::string m_surname;

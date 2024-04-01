@@ -2,13 +2,13 @@
 
 // g++ main.cpp MyMenu/CMenuItem.cpp MyMenu/CMenu.cpp Models/User/User.cpp Models/Airplane/Airplane.cpp Models/User/Employee.cpp Models/Ticket/Ticket.cpp Models/User/Passenger.cpp
 
-#include ".\MyMenu\CMenu.h"
-#include ".\MyMenu\CMenuItem.h"
-#include ".\Models\User\User.h"
-#include ".\Models\User\Employee.h"
-#include ".\Models\User\Passenger.h"
-#include ".\Models\Airplane\Airplane.h"
-#include ".\Models\Ticket\Ticket.h"
+#include "./MyMenu/CMenu.h"
+#include "./MyMenu/CMenuItem.h"
+#include "./Models/User/User.h"
+#include "./Models/User/Employee.h"
+#include "./Models/User/Passenger.h"
+#include "./Models/Airplane/Airplane.h"
+#include "./Models/Ticket/Ticket.h"
 #include <iostream>
 #include <string>
 
@@ -73,7 +73,7 @@ SGP::Passenger arrayPassengers[SIZE_ARRAY];
 
 int f7(){
     for(int i = 0; i<SIZE_ARRAY; i++){
-       if(arrayStaff[i].getAge() != 0 )
+       if(arrayStaff[i] != 0 )
        {
         std::cout << arrayStaff[i];
         std::cout << '\n';
@@ -81,12 +81,13 @@ int f7(){
     }
 
      for(int i = 0; i<SIZE_ARRAY; i++){
-       if(arrayPassengers[i].getAge() != 0)
+       if(arrayPassengers[i] != 0)
        {
         std::cout << arrayPassengers[i];
         std::cout << '\n';
        }
     }
+    std::cout <<'\n' << '\n';
     return 7;
 }
 
@@ -98,7 +99,7 @@ int f8(){
         
         case 1:
             for(int i=0; i<SIZE_ARRAY; i++){
-                if(arrayStaff[i].getAge() == 0)
+                if(arrayStaff[i] == 0)
                 {
                     std::cin >> arrayStaff[i];
                     break;
@@ -108,7 +109,7 @@ int f8(){
 
         case 2:
              for(int i=0; i<SIZE_ARRAY; i++){
-                if(arrayPassengers[i].getAge() == 0)
+                if(arrayPassengers[i] == 0)
                 {
                     std::cin >> arrayPassengers[i];
                     break;
@@ -120,6 +121,7 @@ int f8(){
         std::cout << "ERROR!" << '\n';
         break;
     }
+    std::cout <<'\n' << '\n';
     return 8;
 }
 
@@ -145,6 +147,7 @@ int f9(){
         std::cout << "ERROR!" << '\n';
         break;
     }
+    std::cout <<'\n' << '\n';
     return 9;
 }
 
@@ -165,7 +168,7 @@ int f10(){
                     SGP::Employee swap;
                     for(int j=0; j<20; j++){
                         for(int i=0; i<SIZE_ARRAY-1; i++){
-                            if(arrayStaff[i].getAge() > arrayStaff[i+1].getAge()){
+                            if(arrayStaff[i] > arrayStaff[i+1]){
                                 swap = arrayStaff[i];
                                 arrayStaff[i] = arrayStaff[i+1];
                                 arrayStaff[i+1] = swap;
@@ -180,7 +183,7 @@ int f10(){
                     SGP::Employee swap;
                      for(int j=0; j<20; j++){
                     for(int i=0; i<SIZE_ARRAY-1; i++){
-                        if(arrayStaff[i].getAge() < arrayStaff[i+1].getAge()){
+                        if(arrayStaff[i] < arrayStaff[i+1]){
                             swap = arrayStaff[i];
                             arrayStaff[i] = arrayStaff[i+1];
                             arrayStaff[i+1] = swap;
@@ -209,7 +212,7 @@ int f10(){
                     SGP::Passenger swap;
                     for(int j=0; j<20; j++){
                     for(int i=0; i<SIZE_ARRAY-1; i++){
-                        if(arrayPassengers[i].getAge() > arrayPassengers[i+1].getAge()){
+                        if(arrayPassengers[i] > arrayPassengers[i+1]){
                             swap = arrayPassengers[i];
                             arrayPassengers[i] = arrayPassengers[i+1];
                             arrayPassengers[i+1] = swap;
@@ -224,7 +227,7 @@ int f10(){
                     SGP::Passenger swap;
                      for(int j=0; j<20; j++){
                     for(int i=0; i<SIZE_ARRAY-1; i++){
-                        if(arrayPassengers[i].getAge() < arrayPassengers[i+1].getAge()){
+                        if(arrayPassengers[i] < arrayPassengers[i+1]){
                             swap = arrayPassengers[i];
                             arrayPassengers[i] = arrayPassengers[i+1];
                             arrayPassengers[i+1] = swap;
@@ -249,6 +252,7 @@ int f10(){
         break;
 
     }
+    std::cout <<'\n' << '\n';
     return 10;
 }
 

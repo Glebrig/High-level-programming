@@ -20,13 +20,17 @@ namespace SGP{
     }
   } 
 
+  void Passenger::printData(){
+  std::cout << "Name: " << m_name << "\n";
+  std::cout << "Surname: " << m_surname << "\n";
+  std::cout << "Age: " << m_age << "\n";
+  std::cout << "Login:" << m_login << "\n";
+  std::cout << "Password: " << m_password << "\n";
+  std::cout << "Number of ticket: " << m_numberOfTicket << "\n";
+ }
+
 std::ostream& operator<<(std::ostream& out, Passenger& passenger){
-   out << "Name: " << passenger.m_name << std::endl;
-   out << "Sername: " << passenger.m_surname << std::endl;
-   out << "Age: " << passenger.m_age << std::endl;
-   out << "Login: " << passenger.m_login << std::endl;
-   out << "Password: " << passenger.m_password << std::endl;
-   out << "Number of ticket: " << passenger.m_numberOfTicket << std::endl;
+   passenger.printData();
    return out;
    }
 
@@ -47,15 +51,23 @@ std::ostream& operator<<(std::ostream& out, Passenger& passenger){
  }
 
  bool operator>(const Passenger &d1, const Passenger &d2){
- return d1.m_numberOfTicket>d2.m_numberOfTicket;
+ return d1.m_age>d2.m_age;
  }
 
  bool operator<(const Passenger &d1, const Passenger &d2){
- return d1.m_numberOfTicket<d2.m_numberOfTicket;
+ return d1.m_age<d2.m_age;
  }
 
  bool operator==(const Passenger &d1, const Passenger &d2){
- return d1.m_numberOfTicket==d2.m_numberOfTicket;
+ return d1.m_age==d2.m_age;
+ }
+
+ bool operator==(const Passenger &d1, const int &d2){
+ return d1.m_age==d2;
+ }
+
+ bool operator!=(const Passenger &d1, const int &d2){
+ return d1.m_age!=d2;
  }
 
 }

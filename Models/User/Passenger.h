@@ -12,7 +12,11 @@ namespace SGP{
  int getAge();
  void setAge(int age);
 
- friend bool operator==(const Passenger &d1, const Passenger &d2); 
+ void printData();
+
+ friend bool operator==(const Passenger &d1, const Passenger &d2);
+ friend bool operator==(const Passenger &d1, const int &d2);  
+ friend bool operator!=(const Passenger &d1, const int &d2);  
  friend bool operator>(const Passenger &d1, const Passenger &d2);
  friend bool operator<(const Passenger &d1, const Passenger &d2);
 
