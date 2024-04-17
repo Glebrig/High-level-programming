@@ -1,33 +1,31 @@
-// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\User\User.cpp .\Models\Airplane\Airplane.cpp .\Models\User\Employee.cpp .\Models\Ticket\Ticket.cpp .\Models\User\Passenger.cpp
+// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\User\User.cpp .\Models\Airplane\Airplane.cpp .\Models\User\Employee.cpp .\Models\Ticket\Ticket.cpp .\Models\User\Passenger.cpp .\MyVectors\MyVector.cpp
 
-// g++ main.cpp MyMenu/CMenuItem.cpp MyMenu/CMenu.cpp Models/User/User.cpp Models/Airplane/Airplane.cpp Models/User/Employee.cpp Models/Ticket/Ticket.cpp Models/User/Passenger.cpp
+// g++ main.cpp MyMenu/CMenuItem.cpp MyMenu/CMenu.cpp Models/User/User.cpp Models/Airplane/Airplane.cpp Models/User/Employee.cpp Models/Ticket/Ticket.cpp Models/User/Passenger.cpp MyVectors/MyVector.cpp
 
 #include "./MyMenu/CMenu.h"
 #include "./MyMenu/CMenuItem.h"
 #include "./Models/User/User.h"
 #include "./Models/User/Employee.h"
+#include "./MyVectors/MyVector.h"
 #include "./Models/User/Passenger.h"
 #include "./Models/Airplane/Airplane.h"
 #include "./Models/Ticket/Ticket.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 #pragma region функции-заглушки
 
+SGP::Vector arrayStaff;
+
 const int SIZE_ARRAY = 3;
-SGP::Employee arrayStaff[SIZE_ARRAY];
 SGP::Passenger arrayPassengers[SIZE_ARRAY];
 
 int f1(){
-    for(int i = 0; i<SIZE_ARRAY; i++){
-       if(arrayStaff[i] != 0 )
-       {
-        std::cout << arrayStaff[i];
-        std::cout << '\n';
-       }
-    }
+    //!!!!!!!!!!!!
+     arrayStaff.printAllEmployees();
 
      for(int i = 0; i<SIZE_ARRAY; i++){
        if(arrayPassengers[i] != 0)
@@ -47,13 +45,11 @@ int f2(){
     switch (choice){
         
         case 1:
-            for(int i=0; i<SIZE_ARRAY; i++){
-                if(arrayStaff[i] == 0)
-                {
-                    std::cin >> arrayStaff[i];
-                    break;
-                }
-            }
+        {
+             SGP::Employee employee;
+             std::cin >> employee;
+             arrayStaff.addEmployee(&employee);
+        }
         break;
 
         case 2:
@@ -85,7 +81,7 @@ int f3(){
     switch (choice){
 
         case 1:
-        arrayStaff[index].setAge(0);
+       // arrayStaff[index].setAge(0);
         break;
 
         case 2:
@@ -101,7 +97,7 @@ int f3(){
 }
 
 int f4(){
-    int choice = 0;
+    /*int choice = 0;
     int direction = 0; 
     std::cout << "Who do you want to sort?" << '\n' << "Employee (1)" << '\n' << "Passenger (2)" << '\n';
     std::cin >> choice;
@@ -129,7 +125,7 @@ int f4(){
 
                 case 2:
                 {
-                    SGP::Employee swap;
+                    /*SGP::Employee swap;
                      for(int j=0; j<20; j++){
                     for(int i=0; i<SIZE_ARRAY-1; i++){
                         if(arrayStaff[i] < arrayStaff[i+1]){
@@ -174,7 +170,8 @@ int f4(){
                 case 2:
                 {
                     SGP::Passenger swap;
-                     for(int j=0; j<20; j++){
+                    
+                    for(int j=0; j<20; j++){
                     for(int i=0; i<SIZE_ARRAY-1; i++){
                         if(arrayPassengers[i] < arrayPassengers[i+1]){
                             swap = arrayPassengers[i];
@@ -201,7 +198,7 @@ int f4(){
         break;
 
     }
-    std::cout <<'\n' << '\n';
+    std::cout <<'\n' << '\n';*/
     return 4;
 }
 

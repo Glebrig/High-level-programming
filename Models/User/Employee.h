@@ -10,7 +10,8 @@ namespace SGP{
 
  int getAge();
  void setAge(int age);
- 
+ std::string getPost();
+
  void printData();
 
  friend std::ostream& operator<<(std::ostream& out, Employee& employee);
@@ -21,7 +22,7 @@ namespace SGP{
  friend bool operator!=(const Employee &d1, const int &d2); 
  friend bool operator>(const Employee &d1, const Employee &d2);
  friend bool operator<(const Employee &d1, const Employee &d2);
-
+ 
  private:
  std::string m_name;
  std::string m_surname; 

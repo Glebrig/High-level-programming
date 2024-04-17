@@ -3,6 +3,7 @@
 #include "./Employee.h"
 
 #include <iostream>
+using namespace std;
 namespace SGP{
   
  Employee::Employee(std::string name, std::string surname, int age, std::string login, std::string password, std::string post):User(name, surname, age, login, password){
@@ -23,6 +24,10 @@ namespace SGP{
       m_age = age;
     }
   } 
+
+ string Employee::getPost(){
+  return m_post;
+ }
 
   void Employee::printData(){
   std::cout << "Name: " << m_name << "\n";
