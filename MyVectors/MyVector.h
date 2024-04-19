@@ -22,8 +22,6 @@ void removeEmployee(int index);
 Employee getEmployee(int index);
 void setEmployee(int index, Employee employee);
 void sortByAge(int direction);
-bool isEmpty();
-
-~Vector();
+bool isEmpty(int index);
 };
 }

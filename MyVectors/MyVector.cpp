@@ -15,9 +15,13 @@ void Vector::setSize(int size){
     _size = size;
 }
 
+bool Vector::isEmpty(int index){
+    return (employees[index].getAge()==0);
+}
+
 void Vector::addEmployee() {
    for(int i=0; i<_size; i++){
-        if(employees[i].getAge()==0){
+        if(isEmpty(i)){
             Employee added;
             std::cin >> added;
             employees[i]=added;
@@ -25,7 +29,7 @@ void Vector::addEmployee() {
         }
    }
 
-    if(employees[_size-1].getAge() != 0){
+    if(isEmpty(_size-1) == false){
         Employee* temporary = new Employee[_size*2];
         for(int j=0; j<_size; j++){
             temporary[j]=employees[j];
@@ -40,6 +44,27 @@ void Vector::addEmployee() {
 
 void Vector::removeEmployee(int index) {
     employees[index].setAge(0);
+    
+    for(int i=0; i<_size-1; i++){
+        for(int j=i+1; j<_size; j++){
+            if(isEmpty(i)){
+                employees[i]=employees[j];
+                employees[j].setAge(0);
+            }
+        }
+    }
+
+    if(isEmpty(_size%2)){
+        Employee* temporary = new Employee[_size%2];
+        for(int j=0; j<_size%2; j++){
+            temporary[j]=employees[j];
+        }
+        setSize(_size%2);
+        employees = new Employee[_size];
+        for(int j=0; j<_size; j++){
+            employees[j] = temporary[j];
+        }
+    }
 }
 
 Employee Vector::getEmployee(int index) {
@@ -52,7 +77,7 @@ void Vector::setEmployee(int index, Employee employee) {
 
 void Vector::printAllEmployees() {
     for(int i=0; i<_size;i++){
-        if(employees[i].getAge() != 0){
+        if(isEmpty(i) == false){
             std::cout << employees[i] << '\n';
         }
 
@@ -84,6 +109,4 @@ void Vector::sortByAge(int direction) {
         }
     }
 }
-
-Vector::~Vector(){};
 }
