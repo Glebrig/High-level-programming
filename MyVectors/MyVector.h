@@ -8,14 +8,22 @@
 namespace SGP {
 class Vector {
 private:
-std::vector<Employee*> employees;
+Employee* employees;
 public:
-void addEmployee(Employee* employee);
-void removeEmployee(int index);
-Employee* getEmployee(int index);
-void setEmployee(int index, Employee* employee);
+int _size;
+Vector(int size);
+
+int getSize();
+void setSize(int size);
+
 void printAllEmployees();
-void sortByAge();
+void addEmployee();
+void removeEmployee(int index);
+Employee getEmployee(int index);
+void setEmployee(int index, Employee employee);
+void sortByAge(int direction);
+bool isEmpty();
+
 ~Vector();
 };
 }

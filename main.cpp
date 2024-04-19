@@ -18,13 +18,12 @@ using namespace std;
 
 #pragma region функции-заглушки
 
-SGP::Vector arrayStaff;
+SGP::Vector arrayStaff(3);
 
 const int SIZE_ARRAY = 3;
 SGP::Passenger arrayPassengers[SIZE_ARRAY];
 
 int f1(){
-    //!!!!!!!!!!!!
      arrayStaff.printAllEmployees();
 
      for(int i = 0; i<SIZE_ARRAY; i++){
@@ -46,9 +45,7 @@ int f2(){
         
         case 1:
         {
-             SGP::Employee employee;
-             std::cin >> employee;
-             arrayStaff.addEmployee(&employee);
+            arrayStaff.addEmployee();
         }
         break;
 
@@ -81,7 +78,7 @@ int f3(){
     switch (choice){
 
         case 1:
-       // arrayStaff[index].setAge(0);
+        arrayStaff.removeEmployee(index);
         break;
 
         case 2:
@@ -97,7 +94,7 @@ int f3(){
 }
 
 int f4(){
-    /*int choice = 0;
+    int choice = 0;
     int direction = 0; 
     std::cout << "Who do you want to sort?" << '\n' << "Employee (1)" << '\n' << "Passenger (2)" << '\n';
     std::cin >> choice;
@@ -110,31 +107,13 @@ int f4(){
             switch(direction){
                 case 1:
                 {
-                    SGP::Employee swap;
-                    for(int j=0; j<20; j++){
-                        for(int i=0; i<SIZE_ARRAY-1; i++){
-                            if(arrayStaff[i] > arrayStaff[i+1]){
-                                swap = arrayStaff[i];
-                                arrayStaff[i] = arrayStaff[i+1];
-                                arrayStaff[i+1] = swap;
-                            }
-                        }
-                    }
+                    arrayStaff.sortByAge(1);  
                     break;
-                }   
-
+                }
+   
                 case 2:
                 {
-                    /*SGP::Employee swap;
-                     for(int j=0; j<20; j++){
-                    for(int i=0; i<SIZE_ARRAY-1; i++){
-                        if(arrayStaff[i] < arrayStaff[i+1]){
-                            swap = arrayStaff[i];
-                            arrayStaff[i] = arrayStaff[i+1];
-                            arrayStaff[i+1] = swap;
-                        }
-                    }
-                    }
+                    arrayStaff.sortByAge(2);   
                     break;
                 }   
         
@@ -198,7 +177,7 @@ int f4(){
         break;
 
     }
-    std::cout <<'\n' << '\n';*/
+    std::cout <<'\n' << '\n';
     return 4;
 }
 
@@ -209,7 +188,7 @@ const int ITEMS_NUMBER = 4;
 
 int main() {
   using namespace SGP;
-    int a = 0;
+    //int a = 0;
     CMenuItem items[ITEMS_NUMBER] {CMenuItem{"array of users", f1}, CMenuItem{"add user", f2}, CMenuItem{"delete user", f3}, 
     CMenuItem{"sort users by age", f4}};
     
