@@ -5,6 +5,9 @@ namespace SGP {
 Vector::Vector(int size){
     employees = new Employee[size];
     _size = size;
+    for(int i=0; i<_size; i++){
+        employees[i].setAge(0);
+    }
 }
 
 int Vector::getSize(){

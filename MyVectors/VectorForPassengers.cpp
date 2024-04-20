@@ -5,6 +5,9 @@ namespace SGP {
 VectorForPassengers::VectorForPassengers(int size){
     passengers = new Passenger[size];
     _size = size;
+    for(int i=0; i<_size; i++){
+        passengers[i].setAge(0);
+    }
 }
 
 int VectorForPassengers::getSize(){
@@ -44,6 +47,27 @@ void VectorForPassengers::addPassenger() {
 
 void VectorForPassengers::removePassenger(int index) {
     passengers[index].setAge(0);
+
+    for(int i=0; i<_size-1; i++){
+        for(int j=i+1; j<_size; j++){
+            if(isEmpty(i)){
+                passengers[i]=passengers[j];
+                passengers[j].setAge(0);
+            }
+        }
+    }
+
+    if(isEmpty(_size%2)){
+        Passenger* temporary = new Passenger[_size%2];
+        for(int j=0; j<_size%2; j++){
+            temporary[j]=passengers[j];
+        }
+        setSize(_size%2);
+        passengers = new Passenger[_size];
+        for(int j=0; j<_size; j++){
+            passengers[j] = temporary[j];
+        }
+    }
 }
 
 Passenger VectorForPassengers::getPassenger(int index) {
