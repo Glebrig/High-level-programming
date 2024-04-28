@@ -1,16 +1,14 @@
-// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\User\User.cpp .\Models\Airplane\Airplane.cpp .\Models\User\Employee.cpp .\Models\Ticket\Ticket.cpp .\Models\User\Passenger.cpp .\MyVectors\MyVector.cpp .\MyVectors\VectorForPassengers.cpp
+// g++ .\main.cpp .\MyMenu\CMenuItem.cpp .\MyMenu\CMenu.cpp .\Models\Airplane\Airplane.cpp .\Models\User\User.cpp .\Models\User\Employee.cpp .\Models\User\Passenger.cpp
 
-// g++ main.cpp MyMenu/CMenuItem.cpp MyMenu/CMenu.cpp Models/User/User.cpp Models/Airplane/Airplane.cpp Models/User/Employee.cpp Models/Ticket/Ticket.cpp Models/User/Passenger.cpp MyVectors/MyVector.cpp MyVectors/VectorForPassengers.cpp
+// g++ main.cpp MyMenu/CMenuItem.cpp MyMenu/CMenu.cpp Models/Airplane/Airplane.cpp Models/User/User.cpp Models/User/Employee.cpp Models/User/Passenger.cpp
 
 #include "./MyMenu/CMenu.h"
 #include "./MyMenu/CMenuItem.h"
 #include "./Models/User/User.h"
 #include "./Models/User/Employee.h"
-#include "./MyVectors/MyVector.h"
-#include "./MyVectors/VectorForPassengers.h"
 #include "./Models/User/Passenger.h"
 #include "./Models/Airplane/Airplane.h"
-#include "./Models/Ticket/Ticket.h"
+#include "./MyVectors/MyVector.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -19,13 +17,14 @@ using namespace std;
 
 #pragma region функции-заглушки
 
-SGP::Vector arrayStaff(3);
-SGP::VectorForPassengers arrayPassengers(3);
+SGP::Vector<SGP::Employee> arrayStaff(3);
+SGP::Vector<SGP::Passenger> arrayPassengers(3);
+SGP::Vector<SGP::Airplane> arrayPlanes(3);
 
 int f1(){
-     arrayStaff.printAllEmployees();
+     arrayStaff.printAll();
      std::cout << "\n";
-     arrayPassengers.printAllPassengers();
+     arrayPassengers.printAll();
     return 1;
 }
 
@@ -37,13 +36,13 @@ int f2(){
         
         case 1:
         {
-            arrayStaff.addEmployee();
+            arrayStaff.add();
         }
         break;
 
         case 2:
         {
-             arrayPassengers.addPassenger();
+            arrayPassengers.add();
         }
         break;
 
@@ -66,11 +65,11 @@ int f3(){
     switch (choice){
 
         case 1:
-        arrayStaff.removeEmployee(index);
+        arrayStaff.remove(index);
         break;
 
         case 2:
-        arrayPassengers.removePassenger(index);
+        arrayPassengers.remove(index);
         break;
 
         default:
@@ -95,13 +94,13 @@ int f4(){
             switch(direction){
                 case 1:
                 {
-                    arrayStaff.sortByAge(1);  
+                    arrayStaff.sort(1);  
                     break;
                 }
    
                 case 2:
                 {
-                    arrayStaff.sortByAge(2);   
+                    arrayStaff.sort(2);   
                     break;
                 }   
         
@@ -120,13 +119,13 @@ int f4(){
             switch(direction){
                case 1:
                 {
-                    arrayPassengers.sortByAge(1);  
+                    arrayPassengers.sort(1);  
                     break;
                 }
    
                 case 2:
                 {
-                    arrayPassengers.sortByAge(2);   
+                    arrayPassengers.sort(2);   
                     break;
                 }   
         
@@ -148,16 +147,63 @@ int f4(){
     return 4;
 }
 
+int f5(){
+    arrayPlanes.printAll();
+    std::cout << "\n";
+    return 5;
+}
+
+int f6(){
+    arrayPlanes.add(); 
+    return 6;
+}
+
+int f7(){   
+    int index = -1;
+    std::cout << "Enter the airplanes number:" << '\n';
+    std::cin >> index;
+    index-=1;
+    arrayPlanes.remove(index);   
+    std::cout <<'\n';
+    return 7;
+}
+
+int f8(){
+    int direction = 0; 
+    std::cout << "Select the sorting direction" << '\n' << " Increase (1)" << '\n' << "Decrease (2)" << '\n';
+    std::cin >> direction;
+    
+    switch(direction){
+        case 1:
+        {
+            arrayPlanes.sort(1);  
+            break;
+        }
+   
+        case 2:
+        {
+            arrayPlanes.sort(2);   
+            break;
+        }   
+        
+        default:
+        {
+            std::cout << "ERROR!" << '\n';
+            break; 
+        } 
+    }
+return 8;
+}
 
 #pragma endregion
 
-const int ITEMS_NUMBER = 4;
+const int ITEMS_NUMBER = 8;
 
 int main() {
   using namespace SGP;
     CMenuItem items[ITEMS_NUMBER] {CMenuItem{"array of users", f1}, CMenuItem{"add user", f2}, CMenuItem{"delete user", f3}, 
-    CMenuItem{"sort users by age", f4}};
-    
+    CMenuItem{"sort users by age", f4}, CMenuItem{"array of airplanes", f5}, CMenuItem{"add airplane", f6}, 
+    CMenuItem{"delete airplane", f7}, CMenuItem{"sort airplanes by number", f8}};
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
 

@@ -3,12 +3,25 @@
 namespace SGP{
  class Airplane{
  public:
- Airplane();
- Airplane(std::string number, std::string brand);
+ Airplane(){};
+ Airplane(unsigned int number, std::string brand);
+
+ unsigned int get();
+ void set(unsigned int num);
+
  void printData();
- std::string getNumber();
+
+ friend std::ostream& operator<<(std::ostream& out, Airplane& airplane);
+ friend std::istream& operator>>(std::istream& in, Airplane& airplane);
+ 
+ friend bool operator==(const Airplane &d1, const Airplane &d2); 
+ friend bool operator==(const Airplane &d1, const unsigned int &d2); 
+ friend bool operator!=(const Airplane &d1, const unsigned int &d2); 
+ friend bool operator>(const Airplane &d1, const Airplane &d2);
+ friend bool operator<(const Airplane &d1, const Airplane &d2);
+
  protected:
- std::string m_number;
+ unsigned int m_number;
  std::string m_brand;
  };
 }

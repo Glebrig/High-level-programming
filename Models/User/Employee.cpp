@@ -1,7 +1,4 @@
-/*#include ".\Employee.h"*/
-
 #include "./Employee.h"
-
 #include <iostream>
 using namespace std;
 namespace SGP{
@@ -15,11 +12,11 @@ namespace SGP{
     m_post=post;
  }
 
-  int Employee::getAge(){
+  int Employee::get(){
   return m_age;
  }
 
-  void Employee::setAge(int age){
+  void Employee::set(int age){
     if( (age >= 0) and (age < 100) ) {
       m_age = age;
     }
@@ -33,7 +30,7 @@ namespace SGP{
   std::cout << "Name: " << m_name << "\n";
   std::cout << "Surname: " << m_surname << "\n";
   std::cout << "Age: " << m_age << "\n";
-  std::cout << "Login:" << m_login << "\n";
+  std::cout << "Login: " << m_login << "\n";
   std::cout << "Password: " << m_password << "\n";
   std::cout << "Post: " << m_post << "\n";
  }
@@ -78,5 +75,4 @@ namespace SGP{
  bool operator!=(const Employee &d1, const int &d2){
  return d1.m_age!=d2;
  }
-
 }

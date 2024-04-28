@@ -10,11 +10,11 @@ namespace SGP{
     m_numberOfTicket = numberOfTicket;
  }
 
- int Passenger::getAge(){
+ int Passenger::get(){
   return m_age;
  }
 
-  void Passenger::setAge(int age){
+  void Passenger::set(int age){
     if( (age >= 0) and (age < 100) ) {
       m_age = age;
     }

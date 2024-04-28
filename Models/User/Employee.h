@@ -8,8 +8,8 @@ namespace SGP{
  Employee(){};
  Employee(std::string name, std::string surname, int age, std::string login, std::string password, std::string post);
 
- int getAge();
- void setAge(int age);
+ int get();
+ void set(int age);
  std::string getPost();
 
  void printData();

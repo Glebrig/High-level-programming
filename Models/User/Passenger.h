@@ -9,8 +9,8 @@ namespace SGP{
  friend std::ostream& operator<<(std::ostream& out, Passenger& passenger);
  friend std::istream& operator>>(std::istream& in, Passenger& passenger);
 
- int getAge();
- void setAge(int age);
+ int get();
+ void set(int age);
 
  void printData();
 
