@@ -1,5 +1,3 @@
-/* #include ".\CMenuItem.h"*/
-
 #include "./CMenuItem.h"
 
 #include <string>

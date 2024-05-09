@@ -1,5 +1,7 @@
 #include "./CMenu.h"
 #include <iostream>
+#include <limits>
+#include <stdexcept> 
 #include <string>
 
 namespace SGP {
@@ -37,7 +39,20 @@ void CMenu::print() {
 int CMenu::runCommand() {
     print();
     std::cout << "\n   Select >> ";
-    std::cin >> select;
+
+    while (true) {
+        try {
+            if (!(std::cin >> select) || (select < 0) || (select > 10)) {
+                throw std::runtime_error("Invalid input! Enter a number from 0 to 10!");
+            }
+            break;
+        } 
+        catch (std::exception& e) {
+            std::cout << e.what() << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
     return items[select - 1].run();
 }
 }

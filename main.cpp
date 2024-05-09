@@ -22,6 +22,7 @@ SGP::Vector<SGP::Passenger> arrayPassengers(3);
 SGP::Vector<SGP::Airplane> arrayPlanes(3);
 
 int f1(){
+     system("cls");
      arrayStaff.printAll();
      std::cout << "\n";
      arrayPassengers.printAll();
@@ -29,6 +30,7 @@ int f1(){
 }
 
 int f2(){
+    system("cls");
     int choice = 0;
     std::cout << "Who do you want to add?" << '\n' << "Employee (1)" << '\n' << "Passenger (2)" << '\n';
     std::cin >> choice;
@@ -55,6 +57,7 @@ int f2(){
 }
 
 int f3(){
+    system("cls");
     int choice = 0;
     int index = -1;
     std::cout << "Who do you want to delete?" << '\n' << "Employee (1)" << '\n' << "Passenger (2)" << '\n';
@@ -81,6 +84,34 @@ int f3(){
 }
 
 int f4(){
+    system("cls");
+    int choice = 0;
+    int index = -1;
+    std::cout << "Who do you want to edit?" << '\n' << "Employee (1)" << '\n' << "Passenger (2)" << '\n';
+    std::cin >> choice;
+    std::cout << "Enter the user's number:" << '\n';
+    std::cin >> index;
+    index-=1;
+    switch (choice){
+        
+        case 1:
+        arrayStaff.edit(index);
+        break;
+
+        case 2:
+        arrayPassengers.edit(index);
+        break;
+
+        default:
+        std::cout << "ERROR!" << '\n';
+        break;
+    }
+    std::cout <<'\n';
+    return 4;
+}
+
+int f5(){
+    system("cls");
     int choice = 0;
     int direction = 0; 
     std::cout << "Who do you want to sort?" << '\n' << "Employee (1)" << '\n' << "Passenger (2)" << '\n';
@@ -144,21 +175,24 @@ int f4(){
         break;
     }
     std::cout <<'\n' << '\n';
-    return 4;
-}
-
-int f5(){
-    arrayPlanes.printAll();
-    std::cout << "\n";
     return 5;
 }
 
 int f6(){
-    arrayPlanes.add(); 
+    system("cls");
+    arrayPlanes.printAll();
+    std::cout << "\n";
     return 6;
 }
 
-int f7(){   
+int f7(){
+    system("cls");
+    arrayPlanes.add(); 
+    return 7;
+}
+
+int f8(){   
+    system("cls");
     int index = -1;
     std::cout << "Enter the airplanes number:" << '\n';
     std::cin >> index;
@@ -168,7 +202,19 @@ int f7(){
     return 7;
 }
 
-int f8(){
+int f9(){
+    system("cls");
+    int index = -1;
+    std::cout << "Enter the airplanes number:" << '\n';
+    std::cin >> index;
+    index-=1;
+    arrayPlanes.edit(index);   
+    std::cout <<'\n';
+    return 9;
+}
+
+int f10(){
+    system("cls");
     int direction = 0; 
     std::cout << "Select the sorting direction" << '\n' << " Increase (1)" << '\n' << "Decrease (2)" << '\n';
     std::cin >> direction;
@@ -192,18 +238,19 @@ int f8(){
             break; 
         } 
     }
-return 8;
+return 10;
 }
 
 #pragma endregion
 
-const int ITEMS_NUMBER = 8;
+const int ITEMS_NUMBER = 10;
 
 int main() {
   using namespace SGP;
-    CMenuItem items[ITEMS_NUMBER] {CMenuItem{"array of users", f1}, CMenuItem{"add user", f2}, CMenuItem{"delete user", f3}, 
-    CMenuItem{"sort users by age", f4}, CMenuItem{"array of airplanes", f5}, CMenuItem{"add airplane", f6}, 
-    CMenuItem{"delete airplane", f7}, CMenuItem{"sort airplanes by number", f8}};
+    CMenuItem items[ITEMS_NUMBER] {CMenuItem{"array of users", f1}, CMenuItem{"add user", f2}, CMenuItem{"delete user", f3},
+    CMenuItem{"edit users", f4}, CMenuItem{"sort users by age", f5}, CMenuItem{"array of airplanes", f6}, 
+    CMenuItem{"add airplane", f7}, CMenuItem{"delete airplane", f8}, CMenuItem{"edit planes", f9}, 
+    CMenuItem{"sort airplanes by number", f10}};
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
 

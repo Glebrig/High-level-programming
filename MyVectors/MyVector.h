@@ -85,6 +85,11 @@ void remove(int index){
     }
 }
 
+void edit(int index){
+    cells[index].set(0);
+    add();
+}
+
 V get(int index){
     return cells[index];
 }

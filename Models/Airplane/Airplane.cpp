@@ -1,21 +1,22 @@
 #include "./Airplane.h"
 #include <iostream>
+#include <limits>
+#include <stdexcept> 
+
 namespace SGP{
   
- Airplane::Airplane(unsigned int number, std::string brand){
+ Airplane::Airplane(int number, std::string brand){
     m_number = number;
     m_brand = brand;
  }
 
- unsigned int Airplane::get(){
+ int Airplane::get(){
  return m_number;
  }
 
- void Airplane::set(unsigned int num){
-   if( (num >= 0) and (num < 100) ) {
+ void Airplane::set(int num){
    m_number = num;
-   }
-} 
+  } 
 
   void Airplane::printData(){
   std::cout << "Number of airplane: " << m_number << "\n";
@@ -27,13 +28,29 @@ namespace SGP{
    return out;
 }
 
- std::istream& operator>>(std::istream& in, Airplane& airplane){
-   std::cout << "Number of airplane: ";
-   in >> airplane.m_number;
-   std::cout << "Brand: ";
-   in >> airplane.m_brand;
-   return in;
- }
+std::istream& operator>>(std::istream& in, Airplane& airplane){
+    std::cout << "Number of airplane: ";
+    
+    while (true) {
+        try {
+            if (!(in >> airplane.m_number) || (airplane.m_number <= 0)) {
+                throw std::runtime_error("Invalid input! The airplane number is a positive integer! Try again");
+            }
+            in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        } 
+        catch (std::exception& e) {
+            std::cout << e.what() << std::endl;
+            in.clear();
+            in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+
+    std::cout << "Brand: ";
+    in >> airplane.m_brand;
+
+    return in;
+}
 
  bool operator>(const Airplane &d1, const Airplane &d2){
  return d1.m_number>d2.m_number;
@@ -47,11 +64,11 @@ namespace SGP{
  return d1.m_number==d2.m_number;
  }
 
- bool operator==(const Airplane &d1, const unsigned int &d2){
+ bool operator==(const Airplane &d1, const int &d2){
  return d1.m_number==d2;
  }
 
- bool operator!=(const Airplane &d1, const unsigned int &d2){
+ bool operator!=(const Airplane &d1, const int &d2){
  return d1.m_number!=d2;
  }
 

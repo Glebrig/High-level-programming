@@ -1,13 +1,14 @@
 #pragma once
 #include <string>
+
 namespace SGP{
  class Airplane{
  public:
  Airplane(){};
- Airplane(unsigned int number, std::string brand);
+ Airplane(int number, std::string brand);
 
- unsigned int get();
- void set(unsigned int num);
+ int get();
+ void set(int num);
 
  void printData();
 
@@ -15,13 +16,13 @@ namespace SGP{
  friend std::istream& operator>>(std::istream& in, Airplane& airplane);
  
  friend bool operator==(const Airplane &d1, const Airplane &d2); 
- friend bool operator==(const Airplane &d1, const unsigned int &d2); 
- friend bool operator!=(const Airplane &d1, const unsigned int &d2); 
+ friend bool operator==(const Airplane &d1, const int &d2); 
+ friend bool operator!=(const Airplane &d1, const int &d2); 
  friend bool operator>(const Airplane &d1, const Airplane &d2);
  friend bool operator<(const Airplane &d1, const Airplane &d2);
 
  protected:
- unsigned int m_number;
+ int m_number;
  std::string m_brand;
  };
 }

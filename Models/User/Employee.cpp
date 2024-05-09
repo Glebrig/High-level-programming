@@ -1,5 +1,9 @@
 #include "./Employee.h"
 #include <iostream>
+#include <limits>
+#include <stdexcept> 
+#include <algorithm>
+
 using namespace std;
 namespace SGP{
   
@@ -41,18 +45,65 @@ namespace SGP{
    }
 
  std::istream& operator>>(std::istream& in, Employee& employee){
-   std::cout << "Name: " ;
-   in >> employee.m_name;
-   std::cout << "Sername: ";
-   in >> employee.m_surname;
+  std::cout << "Name: ";
+  while(true){
+    std::string input;
+    in >> input;
+    try {
+        if (std::any_of(input.begin(), input.end(), [](char c) {
+            return std::isdigit(c) || !std::isalpha(c);
+        })) {
+            throw std::invalid_argument("Invalid input! The name cannot contain numbers or special characters! Try again");
+        }
+        employee.m_name = input;
+        break;
+    } 
+    catch (std::invalid_argument& e) {
+        std::cout << e.what() << '\n';
+    }
+  }
+
+   std::cout << "Surname: ";
+   while(true){
+    std::string input;
+    in >> input;
+    try {
+        if (std::any_of(input.begin(), input.end(), [](char c) {
+            return std::isdigit(c) || !std::isalpha(c);
+        })) {
+            throw std::invalid_argument("Invalid input! The surname cannot contain numbers or special characters! Try again");
+        }
+        employee.m_surname = input;
+        break;
+    } 
+    catch (std::invalid_argument& e) {
+        std::cout << e.what() << '\n';
+    }
+  }
+
    std::cout << "Age: " ;
-   in >> employee.m_age;
+   while (true) {
+        try {
+            if (!(in >> employee.m_age) || (employee.m_age <= 0) || (employee.m_age > 100)) {
+                throw std::runtime_error("Invalid input! Age is a number from 1 to 100! Try again");
+            }
+            in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        } 
+        catch (std::exception& e) {
+          std::cout << e.what() << std::endl;
+          in.clear();
+          in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+
    std::cout << "Login: ";
    in >> employee.m_login;
    std::cout << "Password: ";
    in >> employee.m_password;
    std::cout << "Post: ";
    in >> employee.m_post;
+   std::cout << '\n';
    return in;
  }
 

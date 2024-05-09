@@ -1,6 +1,7 @@
 #pragma once
 #include "User.h"
 #include <string>
+
 namespace SGP{
  class Passenger: public User{
  public:
