@@ -12,11 +12,9 @@ namespace SGP{
  void set(int age);
  std::string getPost();
 
- void printData();
-
  friend std::ostream& operator<<(std::ostream& out, Employee& employee);
  friend std::istream& operator>>(std::istream& in, Employee& employee);
- 
+
  friend bool operator==(const Employee &d1, const Employee &d2); 
  friend bool operator==(const Employee &d1, const int &d2); 
  friend bool operator!=(const Employee &d1, const int &d2); 

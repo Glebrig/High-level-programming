@@ -10,8 +10,6 @@ namespace SGP{
  int get();
  void set(int num);
 
- void printData();
-
  friend std::ostream& operator<<(std::ostream& out, Airplane& airplane);
  friend std::istream& operator>>(std::istream& in, Airplane& airplane);
  

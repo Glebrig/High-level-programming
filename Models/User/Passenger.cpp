@@ -24,19 +24,15 @@ namespace SGP{
     }
   } 
 
-  void Passenger::printData(){
-  std::cout << "Name: " << m_name << "\n";
-  std::cout << "Surname: " << m_surname << "\n";
-  std::cout << "Age: " << m_age << "\n";
-  std::cout << "Login:" << m_login << "\n";
-  std::cout << "Password: " << m_password << "\n";
-  std::cout << "Number of ticket: " << m_numberOfTicket << "\n";
- }
-
 std::ostream& operator<<(std::ostream& out, Passenger& passenger){
-   passenger.printData();
-   return out;
-   }
+  out << "Name: " << passenger.m_name << "\n";
+  out << "Surname: " << passenger.m_surname << "\n";
+  out << "Age: " << passenger.m_age << "\n";
+  out << "Login:" << passenger.m_login << "\n";
+  out << "Password: " << passenger.m_password << "\n";
+  out << "Number of ticket: " << passenger.m_numberOfTicket << "\n";
+  return out;
+  }
 
  std::istream& operator>>(std::istream& in, Passenger& passenger){
   std::cout << "Name: ";

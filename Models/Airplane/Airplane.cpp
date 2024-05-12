@@ -18,14 +18,10 @@ namespace SGP{
    m_number = num;
   } 
 
-  void Airplane::printData(){
-  std::cout << "Number of airplane: " << m_number << "\n";
-  std::cout << "Brand: " << m_brand << "\n";
- }
-
  std::ostream& operator<<(std::ostream& out, Airplane& airplane){
-   airplane.printData();
-   return out;
+    out << "Number of airplane: " << airplane.m_number << "\n";
+    out << "Brand: " << airplane.m_brand << "\n";
+    return out;
 }
 
 std::istream& operator>>(std::istream& in, Airplane& airplane){

@@ -30,19 +30,15 @@ namespace SGP{
   return m_post;
  }
 
-  void Employee::printData(){
-  std::cout << "Name: " << m_name << "\n";
-  std::cout << "Surname: " << m_surname << "\n";
-  std::cout << "Age: " << m_age << "\n";
-  std::cout << "Login: " << m_login << "\n";
-  std::cout << "Password: " << m_password << "\n";
-  std::cout << "Post: " << m_post << "\n";
- }
-
  std::ostream& operator<<(std::ostream& out, Employee& employee){
-   employee.printData();
+  out << "Name: " << employee.m_name << "\n";
+  out << "Surname: " << employee.m_surname << "\n";
+  out << "Age: " << employee.m_age << "\n";
+  out << "Login: " << employee.m_login << "\n";
+  out << "Password: " << employee.m_password << "\n";
+  out << "Post: " << employee.m_post << "\n";
    return out;
-   }
+  }
 
  std::istream& operator>>(std::istream& in, Employee& employee){
   std::cout << "Name: ";

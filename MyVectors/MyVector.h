@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -19,7 +20,6 @@ Vector(int size){
     }
 }
 
-
 int getSize(){
     return _size;
 }
@@ -35,6 +35,44 @@ void printAll(){
         }
 
     }
+}
+
+void saveAll(int n){
+ std::ofstream file;
+ switch(n){
+    case 1:
+    file.open("file1.txt");
+    for(int i=0; i<_size;i++){
+        if(isEmpty(i) == false){
+            file << cells[i] << '\n';
+        }
+    }
+    file << '\n';
+    file.close();
+    break;
+
+ case 2:
+    file.open("file2.txt");
+    for(int i=0; i<_size;i++){
+        if(isEmpty(i) == false){
+            file << cells[i] << '\n';
+        }
+    }
+    file << '\n';
+    file.close();
+    break;
+
+ case 3:
+    file.open("file3.txt");
+    for(int i=0; i<_size;i++){
+        if(isEmpty(i) == false){
+            file << cells[i] << '\n';
+        }
+    }
+    file << '\n';
+    file.close();
+    break;
+ }
 }
 
 void add(){

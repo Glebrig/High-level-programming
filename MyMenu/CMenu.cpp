@@ -37,13 +37,48 @@ void CMenu::print() {
 }
 
 int CMenu::runCommand() {
+     while (k1 == 0) {
+        std::cout << "Authorization: \n";
+        std::cout << "Enter your username: ";
+        std::cin >> username;
+        try {
+            if (username != "gleb") {
+                throw std::runtime_error("The user was not found!");
+            }
+            k1++;
+            break;
+        } 
+        catch (std::exception& e) {
+            std::cout << e.what() << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+
+     while (k2 == 0) {
+        std::cout << "Enter your password: ";
+        std::cin >> password;
+        try {
+            if (password != "123") {
+                throw std::runtime_error("The password is incorrect!");
+            }
+            k2++;
+            break;
+        } 
+        catch (std::exception& e) {
+            std::cout << e.what() << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+
     print();
     std::cout << "\n   Select >> ";
 
     while (true) {
         try {
-            if (!(std::cin >> select) || (select < 0) || (select > 10)) {
-                throw std::runtime_error("Invalid input! Enter a number from 0 to 10!");
+            if (!(std::cin >> select) || (select < 0) || (select > 11)) {
+                throw std::runtime_error("Invalid input! Enter a number from 0 to 11!");
             }
             break;
         } 

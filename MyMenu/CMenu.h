@@ -17,7 +17,11 @@ class CMenu {
         CMenuItem *getItems();
         void print();
         int runCommand();
-
+        std::string username;
+        std::string password;
+        int k1=0;
+        int k2=0;
+        
     private:
         int select{-1};
         size_t count{};
