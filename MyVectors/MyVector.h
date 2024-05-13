@@ -81,12 +81,9 @@ void saveAll(int n){
  }
 }
 
-void loadAll(int n){
+void loadStaff(){
     std::ifstream file;
     std::string anything;
-    switch(n){
-    case 1:
-    {  
         std::string name; std::string surname; int age; std::string login; std::string password; std::string post;
         file.open("file1.txt");
         if(file.is_open()){
@@ -97,7 +94,7 @@ void loadAll(int n){
             file >> anything >> login;
             file >> anything >> password;
             file >> anything >> post;
-            V added(name, surname, age, login, password, post);
+            Employee added(name, surname, age, login, password, post);
             for(int i=0; i<_size; i++){
                 if(isEmpty(i)){
               
@@ -119,13 +116,13 @@ void loadAll(int n){
             }       
             }
         file.close();
-        }
-    break;
     }
+}   
 
- case 2:
-    {
-        std::string name; std::string surname; int age; std::string login; std::string password; std::string number;
+void loadPassengers(){
+std::ifstream file;
+std::string anything;
+ std::string name; std::string surname; int age; std::string login; std::string password; std::string number;
         file.open("file2.txt");
         if(file.is_open()){
             while(!file.eof()){
@@ -135,7 +132,7 @@ void loadAll(int n){
             file >> anything >> login;
             file >> anything >> password;
             file >> anything >> number;
-            V added(name, surname, age, login, password, number);
+            Passenger added(name, surname, age, login, password, number);
             for(int i=0; i<_size; i++){
                 if(isEmpty(i)){
                 cells[i]=added;
@@ -156,9 +153,6 @@ void loadAll(int n){
             }
         }
         file.close();
-    break;
-    }
-    }
 }
 
 void loadPlanes(){

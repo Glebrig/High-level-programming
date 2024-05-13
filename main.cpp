@@ -251,8 +251,8 @@ int f11(){
 }
 
 int f12(){
-    arrayStaff.loadAll(1);
-    arrayPassengers.loadAll(2);
+    arrayStaff.loadStaff();
+    arrayPassengers.loadPassengers();
     arrayPlanes.loadPlanes();
     return 12;
 }
