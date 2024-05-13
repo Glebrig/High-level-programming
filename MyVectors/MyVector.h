@@ -2,8 +2,14 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <limits>
+#include <stdexcept> 
 #include <vector>
 #include <algorithm>
+#include "C:\Users\Глеб\Desktop\HLP\Models\User\User.h"
+#include "C:\Users\Глеб\Desktop\HLP\Models\User\Employee.h"
+#include "C:\Users\Глеб\Desktop\HLP\Models\User\Passenger.h"
+#include "C:\Users\Глеб\Desktop\HLP\Models\Airplane\Airplane.h"
 
 namespace SGP {
 template <class V> class Vector{
@@ -73,6 +79,118 @@ void saveAll(int n){
     file.close();
     break;
  }
+}
+
+void loadAll(int n){
+    std::ifstream file;
+    std::string anything;
+    switch(n){
+    case 1:
+    {  
+        std::string name; std::string surname; int age; std::string login; std::string password; std::string post;
+        file.open("file1.txt");
+        if(file.is_open()){
+            while(!file.eof()){
+            file >> anything >> name;
+            file >> anything >> surname;
+            file >> anything >> age;
+            file >> anything >> login;
+            file >> anything >> password;
+            file >> anything >> post;
+            V added(name, surname, age, login, password, post);
+            for(int i=0; i<_size; i++){
+                if(isEmpty(i)){
+              
+                cells[i] = added;
+
+                i = _size+1;
+                }
+            }
+            if(isEmpty(_size-1) == false){
+                V* temporary = new V[_size*2];
+                for(int j=0; j<_size; j++){
+                temporary[j]=cells[j];
+                }
+                setSize(_size*2);
+                cells = new V[_size];
+                for(int j=0; j<_size; j++){
+                cells[j] = temporary[j];
+                }
+            }       
+            }
+        file.close();
+        }
+    break;
+    }
+
+ case 2:
+    {
+        std::string name; std::string surname; int age; std::string login; std::string password; std::string number;
+        file.open("file2.txt");
+        if(file.is_open()){
+            while(!file.eof()){
+            file >> anything >> name;
+            file >> anything >> surname;
+            file >> anything >> age;
+            file >> anything >> login;
+            file >> anything >> password;
+            file >> anything >> number;
+            V added(name, surname, age, login, password, number);
+            for(int i=0; i<_size; i++){
+                if(isEmpty(i)){
+                cells[i]=added;
+                i = _size+1;
+                }
+            }
+            if(isEmpty(_size-1) == false){
+                V* temporary = new V[_size*2];
+                for(int j=0; j<_size; j++){
+                temporary[j]=cells[j];
+                }
+                setSize(_size*2);
+                cells = new V[_size];
+                for(int j=0; j<_size; j++){
+                cells[j] = temporary[j];
+                }
+            }       
+            }
+        }
+        file.close();
+    break;
+    }
+    }
+}
+
+void loadPlanes(){
+std::ifstream file;
+std::string anything;
+ int number; std::string brand;
+        file.open("file3.txt");
+        if(file.is_open()){
+            while(!file.eof()){
+            file >> anything >> number;
+            file >> anything >> brand;
+            Airplane added(number, brand);
+            for(int i=0; i<_size; i++){
+                if(isEmpty(i)){
+                cells[i]=added;
+                i = _size+1;
+                }
+            }
+            if(isEmpty(_size-1) == false){
+                V* temporary = new V[_size*2];
+                for(int j=0; j<_size; j++){
+                temporary[j]=cells[j];
+                }
+                setSize(_size*2);
+                cells = new V[_size];
+                for(int j=0; j<_size; j++){
+                cells[j] = temporary[j];
+                }
+            }       
+            }
+        }
+        file.close();
 }
 
 void add(){

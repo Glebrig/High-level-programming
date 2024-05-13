@@ -250,16 +250,23 @@ int f11(){
     return 11;
 }
 
+int f12(){
+    arrayStaff.loadAll(1);
+    arrayPassengers.loadAll(2);
+    arrayPlanes.loadPlanes();
+    return 12;
+}
+
 #pragma endregion
 
-const int ITEMS_NUMBER = 11;
+const int ITEMS_NUMBER = 12;
 
 int main() {
   using namespace SGP;
     CMenuItem items[ITEMS_NUMBER] {CMenuItem{"array of users", f1}, CMenuItem{"add user", f2}, CMenuItem{"delete user", f3},
     CMenuItem{"edit users", f4}, CMenuItem{"sort users by age", f5}, CMenuItem{"array of airplanes", f6}, 
     CMenuItem{"add airplane", f7}, CMenuItem{"delete airplane", f8}, CMenuItem{"edit planes", f9}, 
-    CMenuItem{"sort airplanes by number", f10}, CMenuItem{"report", f11}};
+    CMenuItem{"sort airplanes by number", f10}, CMenuItem{"saving databases", f11}, CMenuItem{"loading databases", f12}};
     CMenu menu("My console menu", items, ITEMS_NUMBER);
     while (menu.runCommand()) {};
 

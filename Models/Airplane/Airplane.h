@@ -6,7 +6,6 @@ namespace SGP{
  public:
  Airplane(){};
  Airplane(int number, std::string brand);
-
  int get();
  void set(int num);
 

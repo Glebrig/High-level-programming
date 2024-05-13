@@ -77,8 +77,8 @@ int CMenu::runCommand() {
 
     while (true) {
         try {
-            if (!(std::cin >> select) || (select < 0) || (select > 11)) {
-                throw std::runtime_error("Invalid input! Enter a number from 0 to 11!");
+            if (!(std::cin >> select) || (select < 0) || (select > 12)) {
+                throw std::runtime_error("Invalid input! Enter a number from 0 to 12!");
             }
             break;
         } 
