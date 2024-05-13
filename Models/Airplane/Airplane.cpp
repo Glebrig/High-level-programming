@@ -57,7 +57,7 @@ std::istream& operator>>(std::istream& in, Airplane& airplane){
  }
 
  bool operator==(const Airplane &d1, const Airplane &d2){
- return d1.m_number==d2.m_number;
+ return ((d1.m_number==d2.m_number) && (d1.m_brand == d2.m_brand));
  }
 
  bool operator==(const Airplane &d1, const int &d2){

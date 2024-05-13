@@ -24,11 +24,15 @@ namespace SGP{
     }
   } 
 
+ std::string Passenger::getNumber(){
+  return m_numberOfTicket;
+ }
+
 std::ostream& operator<<(std::ostream& out, Passenger& passenger){
   out << "Name: " << passenger.m_name << "\n";
   out << "Surname: " << passenger.m_surname << "\n";
   out << "Age: " << passenger.m_age << "\n";
-  out << "Login:" << passenger.m_login << "\n";
+  out << "Login: " << passenger.m_login << "\n";
   out << "Password: " << passenger.m_password << "\n";
   out << "Number of ticket: " << passenger.m_numberOfTicket << "\n";
   return out;

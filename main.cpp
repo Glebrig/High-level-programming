@@ -18,9 +18,9 @@ using namespace std;
 
 #pragma region функции-заглушки
 
-SGP::Vector<SGP::Employee> arrayStaff(3);
-SGP::Vector<SGP::Passenger> arrayPassengers(3);
-SGP::Vector<SGP::Airplane> arrayPlanes(3);
+SGP::Vector<SGP::Employee> arrayStaff(10);
+SGP::Vector<SGP::Passenger> arrayPassengers(10);
+SGP::Vector<SGP::Airplane> arrayPlanes(10);
 
 int f1(){
      system("cls");

@@ -50,10 +50,9 @@ void saveAll(int n){
     file.open("file1.txt");
     for(int i=0; i<_size;i++){
         if(isEmpty(i) == false){
-            file << cells[i] << '\n';
+            file << cells[i];
         }
     }
-    file << '\n';
     file.close();
     break;
 
@@ -61,10 +60,9 @@ void saveAll(int n){
     file.open("file2.txt");
     for(int i=0; i<_size;i++){
         if(isEmpty(i) == false){
-            file << cells[i] << '\n';
+            file << cells[i];
         }
     }
-    file << '\n';
     file.close();
     break;
 
@@ -72,10 +70,9 @@ void saveAll(int n){
     file.open("file3.txt");
     for(int i=0; i<_size;i++){
         if(isEmpty(i) == false){
-            file << cells[i] << '\n';
+            file << cells[i];
         }
     }
-    file << '\n';
     file.close();
     break;
  }
@@ -84,7 +81,9 @@ void saveAll(int n){
 void loadStaff(){
     std::ifstream file;
     std::string anything;
-        std::string name; std::string surname; int age; std::string login; std::string password; std::string post;
+    std::string name; std::string surname; int age; std::string login; std::string password; std::string post;
+        Employee previous;
+        Employee added;
         file.open("file1.txt");
         if(file.is_open()){
             while(!file.eof()){
@@ -94,35 +93,28 @@ void loadStaff(){
             file >> anything >> login;
             file >> anything >> password;
             file >> anything >> post;
-            Employee added(name, surname, age, login, password, post);
+            added = Employee(name, surname, age, login, password, post);
+            if((added.get() != 0) && (added.get() != previous.get()) && (added.getPost() != " ")){
             for(int i=0; i<_size; i++){
                 if(isEmpty(i)){
-              
                 cells[i] = added;
-
-                i = _size+1;
+                break;
                 }
+            }  
             }
-            if(isEmpty(_size-1) == false){
-                V* temporary = new V[_size*2];
-                for(int j=0; j<_size; j++){
-                temporary[j]=cells[j];
-                }
-                setSize(_size*2);
-                cells = new V[_size];
-                for(int j=0; j<_size; j++){
-                cells[j] = temporary[j];
-                }
-            }       
-            }
-        file.close();
-    }
+            previous = added;
+            if(file.peek() == EOF ) {break;}
+        }
+        }
+    file.close();
 }   
 
 void loadPassengers(){
 std::ifstream file;
 std::string anything;
  std::string name; std::string surname; int age; std::string login; std::string password; std::string number;
+        Passenger previous;
+        Passenger added;
         file.open("file2.txt");
         if(file.is_open()){
             while(!file.eof()){
@@ -131,26 +123,19 @@ std::string anything;
             file >> anything >> age;
             file >> anything >> login;
             file >> anything >> password;
-            file >> anything >> number;
-            Passenger added(name, surname, age, login, password, number);
+            file >> anything >> anything >> anything >>  number;
+            added = Passenger(name, surname, age, login, password, number);
+            if((added.get() != 0) && (added.get() != previous.get()) && (added.getNumber() != " ")){
             for(int i=0; i<_size; i++){
                 if(isEmpty(i)){
                 cells[i]=added;
-                i = _size+1;
+                break;
                 }
             }
-            if(isEmpty(_size-1) == false){
-                V* temporary = new V[_size*2];
-                for(int j=0; j<_size; j++){
-                temporary[j]=cells[j];
-                }
-                setSize(_size*2);
-                cells = new V[_size];
-                for(int j=0; j<_size; j++){
-                cells[j] = temporary[j];
-                }
-            }       
             }
+            previous = added;
+            if(file.peek() == EOF ) {break;}
+        }
         }
         file.close();
 }
@@ -159,29 +144,24 @@ void loadPlanes(){
 std::ifstream file;
 std::string anything;
  int number; std::string brand;
+        Airplane previous; 
+        Airplane added;
         file.open("file3.txt");
         if(file.is_open()){
             while(!file.eof()){
-            file >> anything >> number;
-            file >> anything >> brand;
-            Airplane added(number, brand);
-            for(int i=0; i<_size; i++){
-                if(isEmpty(i)){
-                cells[i]=added;
-                i = _size+1;
+            file >> anything >> anything >> anything >> number;
+            file >> anything >> brand; 
+            added = Airplane(number, brand);
+            if((added.get() != 0) && (added.get() != previous.get())){
+                for(int i=0; i<_size; i++){
+                    if(isEmpty(i)){
+                        cells[i]=added;
+                        break;
+                    }
                 }
             }
-            if(isEmpty(_size-1) == false){
-                V* temporary = new V[_size*2];
-                for(int j=0; j<_size; j++){
-                temporary[j]=cells[j];
-                }
-                setSize(_size*2);
-                cells = new V[_size];
-                for(int j=0; j<_size; j++){
-                cells[j] = temporary[j];
-                }
-            }       
+            previous = added;
+            if(file.peek() == EOF ) {break;}
             }
         }
         file.close();

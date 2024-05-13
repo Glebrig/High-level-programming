@@ -112,7 +112,7 @@ namespace SGP{
  }
 
  bool operator==(const Employee &d1, const Employee &d2){
- return d1.m_age==d2.m_age;
+ return ((d1.m_age==d2.m_age) && (d1.m_name==d2.m_name) && (d1.m_surname==d2.m_surname));
  }
 
  bool operator==(const Employee &d1, const int &d2){
