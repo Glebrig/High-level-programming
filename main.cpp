@@ -18,15 +18,26 @@ using namespace std;
 
 #pragma region функции-заглушки
 
-SGP::Vector<SGP::Employee> arrayStaff(10);
+Vector<SGP::Employee> arrayStaff(10);
 SGP::Vector<SGP::Passenger> arrayPassengers(10);
 SGP::Vector<SGP::Airplane> arrayPlanes(10);
 
 int f1(){
-     system("cls");
-     arrayStaff.printAll();
+    system("cls");
+    for (auto& elem : arrayStaff) {
+        if(elem.get() != 0){
+        cout << elem << '\n';
+        }
+    }
      std::cout << "\n";
-     arrayPassengers.printAll();
+
+    for (auto& elem : arrayPassengers) {
+        if(elem.get() != 0){
+        cout << elem << '\n';
+        }
+    }
+     std::cout << "\n";
+
     return 1;
 }
 

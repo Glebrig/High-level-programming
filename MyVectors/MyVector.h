@@ -6,10 +6,6 @@
 #include <stdexcept> 
 #include <vector>
 #include <algorithm>
-#include "C:\Users\Глеб\Desktop\HLP\Models\User\User.h"
-#include "C:\Users\Глеб\Desktop\HLP\Models\User\Employee.h"
-#include "C:\Users\Глеб\Desktop\HLP\Models\User\Passenger.h"
-#include "C:\Users\Глеб\Desktop\HLP\Models\Airplane\Airplane.h"
 
 namespace SGP {
 template <class V> class Vector{
@@ -21,7 +17,7 @@ int _size;
 Vector(int size){
     cells = new V[size];
     _size = size;
-    for(int i=0; i<_size; i++){
+    for(int i=0; i<getSize(); i++){
         cells[i].set(0);
     }
 }
@@ -258,5 +254,32 @@ bool isEmpty(int index){
     return (cells[index].get()==0);
 }
 
+class iterator {
+    private:
+        V* ptr;
+    public:
+        explicit iterator(V* p = nullptr) : ptr(p) {}
+
+        V& operator*() const { return *ptr; }
+        V* operator->() { return ptr; }
+
+        iterator& operator++() {
+            ++ptr;
+            return *this;
+        }
+
+        iterator operator++(int) {
+            iterator tmp = *this;
+            ++ptr;
+            return tmp;
+        }
+
+        bool operator==(const iterator& other) const { return ptr == other.ptr; }
+        bool operator!=(const iterator& other) const { return ptr != other.ptr; }
+    };
+
+    iterator begin() { return iterator(cells); }
+    iterator end() { return iterator(cells + _size); }
 };
-}
+
+};

@@ -1,4 +1,0 @@
-Number of airplane: 13
-Brand: 13
-Number of airplane: 14
-Brand: 14
